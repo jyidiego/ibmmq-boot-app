@@ -34,7 +34,7 @@
                                      connection-factory="ibmMqConnFactory"
                                      destination="generalQueue"
                                      channel="inboundChannel">
-        <int:poller fixed-rate="7" time-unit="SECONDS"/>
+        <int:poller fixed-rate="7" time-unit="SECONDS" max-messages-per-poll="1000" />
     </int-jms:inbound-channel-adapter>
 
     <bean id="transport"

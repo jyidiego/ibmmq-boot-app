@@ -34,8 +34,8 @@ public class Application implements ApplicationRunner{
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println(format("Send one XML message to %s queue", queueName));
-        messageGateway.send(MessageBuilder.withPayload("<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><entity>1</entity></data>").build());
+        // System.out.println(format("Send one XML message to %s queue", queueName));
+        // messageGateway.send(MessageBuilder.withPayload("<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><entity>1</entity></data>").build());
     }
 
     @Bean
@@ -49,11 +49,13 @@ public class Application implements ApplicationRunner{
         return new XMLPrinter();
     }
 
+    /*
     @Bean
     @ServiceActivator(inputChannel = "fromRabbitChannel")
     public AMQPConsumer amqpConsumer() {
         return new AMQPConsumer();
     }
+    */
 
     @Bean("inboundChannel")
     public DirectChannel inboundChannel() {
@@ -65,10 +67,12 @@ public class Application implements ApplicationRunner{
         return new DirectChannel();
     }
 
+    /*
     @Bean("fromRabbitChannel")
     public DirectChannel fromRabbitChannel() {
         return new DirectChannel();
     }
+    */
 
     @Bean("outboundChannel")
     public DirectChannel outboundChannel() {
